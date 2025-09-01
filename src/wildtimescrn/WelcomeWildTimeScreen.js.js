@@ -87,7 +87,11 @@ const WelcomeWildTimeScreen = () => {
                     title={onboard[index].button}
                     style={{ borderRadius: 43 }}
                     btnWidth={'55%'}
-                    onPress={() => navigation.navigate('WildTimeHomeScreen')}
+                    onPress={() =>
+                      index === 2
+                        ? navigation.replace('WildTimeHomeScreen')
+                        : setIndex(index + 1)
+                    }
                   />
                 </View>
               </LinearGradient>

@@ -97,13 +97,7 @@ const styles = StyleSheet.create({
     width: 237,
     height: 97,
     borderRadius: 33,
-    marginBottom: 22,
-  },
-  btnBorders: {
-    width: 237,
-    height: 105,
-    left: -1,
-    borderRadius: 33,
+    marginBottom: 5,
   },
   btnText: {
     fontWeight: '900',

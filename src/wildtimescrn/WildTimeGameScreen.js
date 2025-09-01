@@ -23,12 +23,12 @@ const Game = () => {
   const [player1, setPlayer1] = useState('');
   const [player2, setPlayer2] = useState('');
   const [player3, setPlayer3] = useState('');
-  const [player4, setPlayer4] = useState('');
+
   const [index, setIndex] = useState(1);
   const [showRules, setShowRules] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
 
-  const players = [player1, player2, player3, player4];
+  const players = [player1, player2, player3];
 
   return (
     <AppBackground>
@@ -154,30 +154,6 @@ The game continues until the company decides to stop - there are no winners, the
                             activeOpacity={0.7}
                             style={styles.removeBtn}
                             onPress={() => setPlayer3('')}
-                          >
-                            <Image
-                              source={require('../assets/icons/remove.png')}
-                            />
-                          </TouchableOpacity>
-                        )}
-                      </View>
-                    )}
-                    {index > 3 && (
-                      <View style={{}}>
-                        <TextInput
-                          style={styles.input}
-                          textAlign="center"
-                          placeholder="ENTER NAME"
-                          value={player4.toUpperCase()}
-                          maxLength={12}
-                          onChangeText={setPlayer4}
-                          placeholderTextColor={'rgba(185, 45, 5, 0.45)'}
-                        />
-                        {player4 && (
-                          <TouchableOpacity
-                            activeOpacity={0.7}
-                            style={styles.removeBtn}
-                            onPress={() => setPlayer4('')}
                           >
                             <Image
                               source={require('../assets/icons/remove.png')}
