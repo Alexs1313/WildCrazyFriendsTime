@@ -29,7 +29,7 @@ const App = () => {
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen
               name="WelcomeWildTimeScreen"
-              component={WelcomeWildTimeScreen}
+              component={WelcomeWildTimeScree}
             />
             <Stack.Screen
               name="WildTimeHomeScreen"
