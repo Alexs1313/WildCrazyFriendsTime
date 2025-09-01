@@ -11,9 +11,9 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
-import AppBackground from '../components/AppBackground';
-import MainAppHeader from '../components/MainAppHeader';
-import WelcomeAnimationWrapper from '../components/WelcomeAnimationWrapper';
+import AppBackground from '../wildtimecmpnts/AppBackground';
+import MainAppHeader from '../wildtimecmpnts/MainAppHeader';
+import WelcomeAnimationWrapper from '../wildtimecmpnts/WelcomeAnimationWrapper';
 
 const { height } = Dimensions.get('window');
 

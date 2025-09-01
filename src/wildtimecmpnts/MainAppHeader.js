@@ -43,7 +43,7 @@ const MainAppHeader = ({ title, screen }) => {
       )}
 
       <LinearGradient
-        colors={['rgba(255, 248, 206, 1)', 'rgba(222, 205, 109, 1)']}
+        colors={['#FEDB7F', '#F1B005']}
         style={[styles.headerContainer]}
       >
         <Text style={[styles.headerText]}>{title}</Text>

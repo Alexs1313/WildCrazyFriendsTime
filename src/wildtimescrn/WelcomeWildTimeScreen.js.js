@@ -8,9 +8,9 @@ import {
 } from 'react-native';
 import { useState } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import AppBackground from '../components/AppBackground';
-import MediumButton from '../components/MediumButton';
-import WelcomeAnimationWrapper from '../components/WelcomeAnimationWrapper';
+import AppBackground from '../wildtimecmpnts/AppBackground';
+import MediumButton from '../wildtimecmpnts/MediumButton';
+import WelcomeAnimationWrapper from '../wildtimecmpnts/WelcomeAnimationWrapper';
 import { useNavigation } from '@react-navigation/native';
 
 const { height } = Dimensions.get('window');
@@ -85,8 +85,9 @@ const WelcomeWildTimeScreen = () => {
                   </Text>
                   <MediumButton
                     title={onboard[index].button}
+                    style={{ borderRadius: 43 }}
                     btnWidth={'55%'}
-                    onPress={() => setIndex(index + 1)}
+                    onPress={() => navigation.navigate('WildTimeHomeScreen')}
                   />
                 </View>
               </LinearGradient>

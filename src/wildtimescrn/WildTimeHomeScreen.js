@@ -8,9 +8,9 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import AppBackground from '../components/AppBackground';
-import MediumButton from '../components/MediumButton';
-import WelcomeAnimationWrapper from '../components/WelcomeAnimationWrapper';
+import AppBackground from '../wildtimecmpnts/AppBackground';
+import MediumButton from '../wildtimecmpnts/MediumButton';
+import WelcomeAnimationWrapper from '../wildtimecmpnts/WelcomeAnimationWrapper';
 
 const { height } = Dimensions.get('window');
 
@@ -32,41 +32,39 @@ const Home = () => {
             )}
           </WelcomeAnimationWrapper>
 
-          <WelcomeAnimationWrapper>
-            <View style={Platform.OS === 'ios' ? { top: -230 } : { top: 35 }}>
-              <MediumButton
-                title={'START GAME'}
-                onPress={() => navigation.navigate('WildTimeGameScreen')}
-                style={styles.btn}
-                borders={styles.btnBorders}
-                textStyle={styles.btnText}
-              />
+          <View style={Platform.OS === 'ios' ? { top: -230 } : { top: 35 }}>
+            <MediumButton
+              title={'START GAME'}
+              onPress={() => navigation.navigate('WildTimeGameScreen')}
+              style={styles.btn}
+              borders={styles.btnBorders}
+              textStyle={styles.btnText}
+            />
 
-              <MediumButton
-                title={'GAME RULES'}
-                onPress={() => navigation.navigate('WildTimeRulesScreen')}
-                style={styles.btn}
-                borders={styles.btnBorders}
-                textStyle={styles.btnText}
-              />
+            <MediumButton
+              title={'GAME RULES'}
+              onPress={() => navigation.navigate('WildTimeRulesScreen')}
+              style={styles.btn}
+              borders={styles.btnBorders}
+              textStyle={styles.btnText}
+            />
 
-              <MediumButton
-                title={'SETTINGS'}
-                onPress={() => navigation.navigate('WildTimeSettingsScreen')}
-                style={styles.btn}
-                borders={styles.btnBorders}
-                textStyle={styles.btnText}
-              />
+            <MediumButton
+              title={'SETTINGS'}
+              onPress={() => navigation.navigate('WildTimeSettingsScreen')}
+              style={styles.btn}
+              borders={styles.btnBorders}
+              textStyle={styles.btnText}
+            />
 
-              <MediumButton
-                title={'ABOUT APP'}
-                onPress={() => navigation.navigate('WildTimeAboutScreen')}
-                style={styles.btn}
-                borders={styles.btnBorders}
-                textStyle={styles.btnText}
-              />
-            </View>
-          </WelcomeAnimationWrapper>
+            <MediumButton
+              title={'ABOUT APP'}
+              onPress={() => navigation.navigate('WildTimeAboutScreen')}
+              style={styles.btn}
+              borders={styles.btnBorders}
+              textStyle={styles.btnText}
+            />
+          </View>
         </View>
       </ScrollView>
     </AppBackground>

@@ -1,31 +1,31 @@
+import WelcomeWildTimeScreen from './src/wildtimescrn/WelcomeWildTimeScreen.js.js';
+import WildTimeHomeScreen from './src/wildtimescrn/WildTimeHomeScreen.js';
+import WildTimeRulesScreen from './src/wildtimescrn/WildTimeRulesScreen.js';
+import WildTimeAboutScreen from './src/wildtimescrn/WildTimeAboutScreen.js';
+import WildTimeGameScreen from './src/wildtimescrn/WildTimeGameScreen.js';
+import WildTimeSettingsScreen from './src/wildtimescrn/WildTimeSettingsScreen.js';
+import WildTimeGameplayScreen from './src/wildtimescrn/WildTimeGameplayScreen.js';
 import { NavigationContainer } from '@react-navigation/native';
-import WildTimeMainLoader from './src/components/WildTimeMainLoader';
-import { WildTimeGameContextProvider } from './src/store/context';
+import WildTimeMainLoader from './src/wildtimecmpnts/WildTimeMainLoader.js';
+import { WildTimeGameContextProvider } from './src/wildtimestr/wildtimcntx.js';
 import { useEffect, useState } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import WelcomeWildTimeScreen from './src/screens/WelcomeWildTimeScreen.js';
-import WildTimeHomeScreen from './src/screens/WildTimeHomeScreen.js';
-import WildTimeRulesScreen from './src/screens/WildTimeRulesScreen.js';
-import WildTimeAboutScreen from './src/screens/WildTimeAboutScreen.js';
-import WildTimeGameScreen from './src/screens/WildTimeGameScreen.js';
-import WildTimeSettingsScreen from './src/screens/WildTimeSettingsScreen.js';
-import WildTimeGameplayScreen from './src/screens/WildTimeGameplayScreen.js';
 
 const Stack = createStackNavigator();
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [showWildTimeStckNav, setShowWildTimeStckNav] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
-      setIsLoading(true);
+      setShowWildTimeStckNav(true);
     }, 5000);
   }, []);
 
   return (
     <NavigationContainer>
       <WildTimeGameContextProvider>
-        {isLoading ? (
+        {showWildTimeStckNav ? (
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen
               name="WelcomeWildTimeScreen"

@@ -1,3 +1,9 @@
+import { useNavigation } from '@react-navigation/native';
+import LinearGradient from 'react-native-linear-gradient';
+import AppBackground from '../wildtimecmpnts/AppBackground';
+import MainAppHeader from '../wildtimecmpnts/MainAppHeader';
+import { useStore } from '../wildtimestr/wildtimcntx';
+import WelcomeAnimationWrapper from '../wildtimecmpnts/WelcomeAnimationWrapper';
 import {
   Dimensions,
   Image,
@@ -7,12 +13,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import LinearGradient from 'react-native-linear-gradient';
-import AppBackground from '../components/AppBackground';
-import MainAppHeader from '../components/MainAppHeader';
-import { useStore } from '../store/context';
-import WelcomeAnimationWrapper from '../components/WelcomeAnimationWrapper';
 
 const { height } = Dimensions.get('window');
 

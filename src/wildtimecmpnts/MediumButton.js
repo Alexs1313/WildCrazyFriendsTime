@@ -209,7 +209,7 @@ export default function MediumButton({
         ]}
       >
         <LinearGradient
-          colors={['rgba(255, 248, 206, 1)', 'rgba(222, 205, 109, 1)']}
+          colors={['#FEDB7F', '#F1B005']}
           style={[styles.gradientButton, style]}
         >
           <Text style={[styles.gradientButtonText, textStyle]}>{title}</Text>
@@ -235,8 +235,7 @@ const styles = StyleSheet.create({
   btnShadow: {
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.2,
     shadowRadius: 12,
-    elevation: 8,
   },
 });

@@ -1,6 +1,5 @@
-import { Alert, StyleSheet, Text, View } from 'react-native';
 import WebView from 'react-native-webview';
-import { useStore } from '../store/context';
+import { useStore } from '../wildtimestr/wildtimcntx';
 
 export default function GameplayWheel() {
   const { setSelectedColor } = useStore();
@@ -98,23 +97,21 @@ export default function GameplayWheel() {
 
   const handleMessage = event => {
     const message = event.nativeEvent.data;
-    console.log(message);
+
     setSelectedColor(message);
   };
 
   return (
-    <>
-      <WebView
-        originWhitelist={['*']}
-        source={{ html: htmlContent }}
-        style={{
-          backgroundColor: 'transparent',
-          marginTop: 40,
-          width: 350,
-          height: 280,
-        }}
-        onMessage={handleMessage}
-      />
-    </>
+    <WebView
+      originWhitelist={['*']}
+      source={{ html: htmlContent }}
+      style={{
+        backgroundColor: 'transparent',
+        marginTop: 180,
+        width: 350,
+        height: 280,
+      }}
+      onMessage={handleMessage}
+    />
   );
 }

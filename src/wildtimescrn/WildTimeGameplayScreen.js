@@ -13,13 +13,14 @@ import { useCallback, useEffect, useState } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import SoundPlayer from 'react-native-sound-player';
 
-import GameplayWheel from '../components/GameplayWheel';
-import AnimatedImage from '../components/AnimatedImage';
-import { useStore } from '../store/context';
-import MediumButton from '../components/MediumButton';
+import GameplayWheel from '../wildtimecmpnts/GameplayWheel';
+import AnimatedImage from '../wildtimecmpnts/AnimatedImage';
+import { useStore } from '../wildtimestr/wildtimcntx';
+import MediumButton from '../wildtimecmpnts/MediumButton';
 import Orientation from 'react-native-orientation-locker';
 import { useFocusEffect } from '@react-navigation/native';
 import { BlurView } from '@react-native-community/blur';
+import AppBackground from '../wildtimecmpnts/AppBackground';
 
 const { height } = Dimensions.get('window');
 
@@ -321,113 +322,121 @@ Task: ${task}`,
   };
 
   return (
-    <ImageBackground
-      source={require('../assets/images/bg.png')}
-      style={{ flex: 1 }}
-    >
-      {selectedColor && (
-        <BlurView style={styles.blurBg} blurType="dark" blurAmount={1} />
-      )}
+    <>
       <View
-        style={[
-          styles.container,
-          selectedColor && { paddingTop: height * 0.08 },
-        ]}
+        style={{
+          position: 'absolute',
+          width: '80%',
+          alignSelf: 'center',
+          top: 90,
+        }}
       >
-        {isLoading ? (
-          <View style={{ alignItems: 'center', marginTop: 50 }}>
-            <AnimatedImage
-              source={require('../assets/images/gameLoader.png')}
-            />
-            <Text style={styles.loaderText}>
-              {`A GOOD MOOD IS COOL
- AND USEFUL!`}
+        {!isLoading && (
+          <LinearGradient
+            colors={['#FEDB7F', '#F1B005']}
+            style={styles.gradientContainer}
+          >
+            <Text style={[styles.gradientText]}>
+              {selectedColor
+                ? `TASK FOR ${players[
+                    randomPlayer ? randomPlayerIdx : currentPlayer
+                  ].toUpperCase()}`
+                : `${players[
+                    randomPlayer ? randomPlayerIdx : currentPlayer
+                  ].toUpperCase()} SPINS THE WHEEL!`}
             </Text>
-          </View>
-        ) : (
-          <>
-            <LinearGradient
-              colors={['rgba(255, 248, 206, 1)', 'rgba(222, 205, 109, 1)']}
-              style={styles.gradientContainer}
-            >
-              <Text style={[styles.gradientText]}>
-                {selectedColor
-                  ? `TASK FOR ${players[
-                      randomPlayer ? randomPlayerIdx : currentPlayer
-                    ].toUpperCase()}`
-                  : `${players[
-                      randomPlayer ? randomPlayerIdx : currentPlayer
-                    ].toUpperCase()} SPINS THE WHEEL!`}
-              </Text>
-            </LinearGradient>
-
-            <GameplayWheel />
-          </>
+          </LinearGradient>
         )}
       </View>
+      <AppBackground>
+        {selectedColor && (
+          <BlurView style={styles.blurBg} blurType="dark" blurAmount={1} />
+        )}
+        <View
+          style={[
+            styles.container,
+            selectedColor && { paddingTop: height * 0.08 },
+          ]}
+        >
+          {isLoading ? (
+            <View style={{ alignItems: 'center', marginTop: 50 }}>
+              <AnimatedImage
+                source={require('../assets/images/gameLoader.png')}
+              />
+              <Text style={styles.loaderText}>
+                {`A GOOD MOOD IS COOL
+ AND USEFUL!`}
+              </Text>
+            </View>
+          ) : (
+            <>
+              <GameplayWheel />
+            </>
+          )}
+        </View>
+        {selectedColor && (
+          <Modal animationType="slide" transparent={true} visible={true}>
+            <View style={{}}>
+              <LinearGradient
+                colors={['#B92D05', 'rgba(185, 45, 5, 0.72)']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                style={styles.containerWrap}
+              >
+                <View style={[styles.rulesContainer]}>
+                  <Text style={styles.categoryText}>
+                    CATEGORY "{selectedColor.toUpperCase()}"
+                  </Text>
 
-      {selectedColor && (
-        <Modal animationType="slide" transparent={true} visible={true}>
-          <View style={{}}>
-            <LinearGradient
-              colors={['#B92D05', 'rgba(185, 45, 5, 0.72)']}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-              style={styles.containerWrap}
-            >
-              <View style={[styles.rulesContainer]}>
-                <Text style={styles.categoryText}>
-                  CATEGORY "{selectedColor.toUpperCase()}"
-                </Text>
+                  <View style={styles.underline} />
 
-                <View style={styles.underline} />
+                  <Text style={styles.taskText}>{task}</Text>
 
-                <Text style={styles.taskText}>{task}</Text>
-
-                <TouchableOpacity
-                  activeOpacity={0.7}
-                  style={styles.shareBtn}
-                  onPress={handleShare}
-                >
-                  <Image source={require('../assets/icons/share.png')} />
-                </TouchableOpacity>
-              </View>
-            </LinearGradient>
-            <View style={{ top: 230 }}>
-              <View style={{ alignItems: 'center', gap: 20 }}>
-                <MediumButton
-                  title={'SKIP TASK'}
-                  btnWidth={'55%'}
-                  style={styles.btn}
-                  textStyle={styles.btnText}
-                  onPress={() => generateTask()}
-                />
-                <MediumButton
-                  title={'NEXT PLAYER'}
-                  btnWidth={'55%'}
-                  style={styles.btn}
-                  textStyle={styles.btnText}
-                  onPress={() => {
-                    setSelectedColor('');
-                    if (players.length - 1 === currentPlayer)
-                      setCurrentPlayer(0);
-                    else {
-                      setCurrentPlayer(currentPlayer + 1);
-                    }
-                    if (randomPlayer) getRandomPlayer();
-                  }}
-                />
+                  <TouchableOpacity
+                    activeOpacity={0.7}
+                    style={styles.shareBtn}
+                    onPress={handleShare}
+                  >
+                    <Image source={require('../assets/icons/share.png')} />
+                  </TouchableOpacity>
+                </View>
+              </LinearGradient>
+              <View style={{ top: 230 }}>
+                <View style={{ alignItems: 'center', gap: 20 }}>
+                  <MediumButton
+                    title={'SKIP TASK'}
+                    btnWidth={'55%'}
+                    style={styles.btn}
+                    textStyle={styles.btnText}
+                    onPress={() => generateTask()}
+                  />
+                  <MediumButton
+                    title={'NEXT PLAYER'}
+                    btnWidth={'55%'}
+                    style={styles.btn}
+                    textStyle={styles.btnText}
+                    onPress={() => {
+                      setSelectedColor('');
+                      if (players.length - 1 === currentPlayer)
+                        setCurrentPlayer(0);
+                      else {
+                        setCurrentPlayer(currentPlayer + 1);
+                      }
+                      if (randomPlayer) getRandomPlayer();
+                    }}
+                  />
+                </View>
               </View>
             </View>
-          </View>
-        </Modal>
-      )}
-    </ImageBackground>
+          </Modal>
+        )}
+      </AppBackground>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  container: { paddingTop: height * 0.15, padding: 28, flex: 1 },
+  container: { paddingTop: height * 0.16, padding: 28, flex: 1 },
   rulesContainer: {
     width: '100%',
     padding: 30,
