@@ -247,8 +247,7 @@ export const tasks = [
 const WildTimeGameplayScreen = ({ route }) => {
   const players = route.params;
   const [isLoading, setIsLoading] = useState(true);
-  const { setSelectedColor, selectedColor, randomPlayer, isEnabledMusic } =
-    useStore();
+  const { setSelectedColor, selectedColor, randomPlayer } = useStore();
   const [task, setTask] = useState('');
   const [currentPlayer, setCurrentPlayer] = useState(0);
   const [randomPlayerIdx, setRandomPlayerIdx] = useState(0);
@@ -258,25 +257,6 @@ const WildTimeGameplayScreen = ({ route }) => {
       Orientation.lockToPortrait();
     }, []),
   );
-
-  useEffect(() => {
-    if (isEnabledMusic)
-      try {
-        SoundPlayer.playSoundFile('super_duper_fun_124565', 'mp3');
-        SoundPlayer.setVolume(1.0);
-        SoundPlayer.setNumberOfLoops(-1);
-      } catch (e) {
-        console.log('e', e);
-      }
-
-    return () => {
-      try {
-        SoundPlayer.stop();
-      } catch (e) {
-        console.log('e', e);
-      }
-    };
-  }, []);
 
   useEffect(() => {
     if (selectedColor) generateTask();
@@ -334,7 +314,7 @@ Task: ${task}`,
         {!isLoading && (
           <LinearGradient
             colors={['#FEDB7F', '#F1B005']}
-            style={styles.gradientContainer}
+            style={[styles.gradientContainer, selectedColor && { zIndex: 0 }]}
           >
             <Text style={[styles.gradientText]}>
               {selectedColor
@@ -376,7 +356,13 @@ Task: ${task}`,
         </View>
         {selectedColor && (
           <Modal animationType="slide" transparent={true} visible={true}>
-            <View style={{}}>
+            <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                flex: 1,
+              }}
+            >
               <LinearGradient
                 colors={['#B92D05', 'rgba(185, 45, 5, 0.72)']}
                 start={{ x: 0, y: 0 }}
@@ -401,8 +387,8 @@ Task: ${task}`,
                   </TouchableOpacity>
                 </View>
               </LinearGradient>
-              <View style={{ top: 230 }}>
-                <View style={{ alignItems: 'center', gap: 20 }}>
+              <View style={{}}>
+                <View style={{ gap: 8 }}>
                   <MediumButton
                     title={'SKIP TASK'}
                     btnWidth={'55%'}
@@ -441,13 +427,12 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: 30,
     paddingTop: 32,
-    paddingHorizontal: 25,
-    paddingBottom: 90,
+    paddingHorizontal: 50,
+    paddingBottom: 80,
     alignItems: 'center',
   },
   containerWrap: {
     borderRadius: 55,
-    top: 220,
     marginHorizontal: 50,
     shadowColor: '#000',
     shadowOffset: {
@@ -507,7 +492,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 12,
     elevation: 8,
-    zIndex: 80,
+    zIndex: 40,
   },
   gradientText: {
     fontWeight: '900',
@@ -527,6 +512,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: '#fff',
     marginBottom: 10,
+    textAlign: 'center',
   },
   taskText: {
     fontWeight: '900',

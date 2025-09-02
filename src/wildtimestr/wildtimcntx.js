@@ -10,8 +10,6 @@ export const WildTimeGameContextProvider = ({ children }) => {
   const [selectedColor, setSelectedColor] = useState('');
   const [randomPlayer, setRandomPlayer] = useState(false);
   const [order, setOrder] = useState(false);
-  const [isEnabledMusic, setIsEnabledMusic] = useState(false);
-  const [toggleMusic, setToggleMusic] = useState(false);
 
   const value = {
     setSelectedColor,
@@ -20,10 +18,6 @@ export const WildTimeGameContextProvider = ({ children }) => {
     randomPlayer,
     order,
     setOrder,
-    isEnabledMusic,
-    setIsEnabledMusic,
-    toggleMusic,
-    setToggleMusic,
   };
 
   return (

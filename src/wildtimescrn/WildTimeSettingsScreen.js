@@ -18,15 +18,7 @@ const { height } = Dimensions.get('window');
 
 const Settings = () => {
   const navigation = useNavigation();
-  const {
-    setRandomPlayer,
-    setIsEnabledMusic,
-    isEnabledMusic,
-    order,
-    setOrder,
-    toggleMusic,
-    setToggleMusic,
-  } = useStore();
+  const { setRandomPlayer, order, setOrder } = useStore();
 
   return (
     <AppBackground>
@@ -34,7 +26,7 @@ const Settings = () => {
         <View style={[styles.container]}>
           <MainAppHeader title={'SETTINGS'} />
           <WelcomeAnimationWrapper>
-            <LinearGradient
+            {/* <LinearGradient
               colors={['#B92D05', 'rgba(185, 45, 5, 0.72)']}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 0 }}
@@ -55,13 +47,13 @@ const Settings = () => {
                   {!toggleMusic && <Text style={styles.selectorText}>OFF</Text>}
                 </TouchableOpacity>
               </View>
-            </LinearGradient>
+            </LinearGradient> */}
 
             <LinearGradient
               colors={['#B92D05', 'rgba(185, 45, 5, 0.72)']}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 0 }}
-              style={{ borderRadius: 55, marginTop: 14 }}
+              style={{ borderRadius: 55, marginTop: 24 }}
             >
               <View style={[styles.rulesContainer]}>
                 <Text style={styles.title}>ORDER OF PLAYERS</Text>
