@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     width: 237,
     height: 97,
     borderRadius: 33,
-    marginBottom: 5,
+    marginBottom: 8,
   },
   btnText: {
     fontWeight: '900',

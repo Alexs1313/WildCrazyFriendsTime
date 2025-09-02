@@ -100,7 +100,7 @@ export default function MediumButton({
       disabled={isDisabled}
     >
       <LinearGradient
-        colors={['#FEDB7F', '#F1B005']}
+        colors={['#FEDB7F', '#ebaa07ff']}
         style={[styles.gradientButton, style]}
       >
         <Text style={[styles.gradientButtonText, textStyle]}>{title}</Text>
