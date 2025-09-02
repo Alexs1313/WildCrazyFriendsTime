@@ -11,7 +11,6 @@ import {
 } from 'react-native';
 import { useCallback, useEffect, useState } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import SoundPlayer from 'react-native-sound-player';
 
 import GameplayWheel from '../wildtimecmpnts/GameplayWheel';
 import AnimatedImage from '../wildtimecmpnts/AnimatedImage';
@@ -521,7 +520,6 @@ const styles = StyleSheet.create({
     marginTop: 28,
     marginBottom: 20,
     textAlign: 'center',
-    height: 50,
   },
   underline: {
     width: 150,

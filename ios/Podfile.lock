@@ -2457,8 +2457,6 @@ PODS:
     - ReactCommon/turbomodule/core
     - SocketRocket
     - Yoga
-  - RNSoundPlayer (0.14.5):
-    - React-Core
   - RNSVG (15.12.1):
     - boost
     - DoubleConversion
@@ -2598,7 +2596,6 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNScreens (from `../node_modules/react-native-screens`)
-  - RNSoundPlayer (from `../node_modules/react-native-sound-player`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - SocketRocket (~> 0.7.1)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -2763,8 +2760,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-gesture-handler"
   RNScreens:
     :path: "../node_modules/react-native-screens"
-  RNSoundPlayer:
-    :path: "../node_modules/react-native-sound-player"
   RNSVG:
     :path: "../node_modules/react-native-svg"
   Yoga:
@@ -2848,7 +2843,6 @@ SPEC CHECKSUMS:
   ReactCommon: 116d6ee71679243698620d8cd9a9042541e44aa6
   RNGestureHandler: 3a73f098d74712952870e948b3d9cf7b6cae9961
   RNScreens: 6ced6ae8a526512a6eef6e28c2286e1fc2d378c3
-  RNSoundPlayer: 7961678d02c7339d9e9cfb78b9f3e8fde17f9df2
   RNSVG: 6f39605a4c4d200b11435c35bd077553c6b5963a
   SocketRocket: d4aabe649be1e368d1318fdf28a022d714d65748
   Yoga: 00013dd9cde63a2d98e8002fcc4f5ddb66c10782
